@@ -1,0 +1,15 @@
+local KillAura = auratab:CreateToggle({
+			Name = "Kill Aura",
+			CurrentValue = false,
+			Flag = "KillAura",
+			Callback = function(Value)
+				killaura = Value
+				while killaura and task.wait() do
+					for _,plr in ipairs(Players:GetPlayers()) do
+						if plr ~= O.me and check_prem(plr.Name) and check_whll(plr.Name) then
+							task.spawn(plr_kill1, plr, true)
+						end
+					end
+				end
+			end,
+		})
