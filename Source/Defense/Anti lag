@@ -1,0 +1,9 @@
+local AntiLag = usertab:CreateToggle({
+			Name = "Anti Lag",
+			CurrentValue = false,
+			Flag = "AntiLag", 
+			Callback = function(Value)
+				AntiLaggg = Value
+				O.me.PlayerScripts.CharacterAndBeamMove.Disabled = Value
+			end,
+		})
