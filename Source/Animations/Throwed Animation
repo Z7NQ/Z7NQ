@@ -1,0 +1,12 @@
+usertab:CreateToggle({
+			Name = "Throwed Animation",
+			CurrentValue = false,
+			Flag = "ThrowedAnimation",
+			Callback = function(Value)
+				if Value then
+					throwedTrack:Play()
+				else
+					throwedTrack:Stop()
+				end
+			end
+		})
