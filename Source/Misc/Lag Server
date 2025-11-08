@@ -1,0 +1,25 @@
+local LagServer = lagtab:CreateToggle({
+		Name = "Lag Server",
+		CurrentValue = false,
+		Callback = function(Value)
+			laggg = Value
+			while laggg do
+				for b=0,N.Lag_Intensity do
+					O.Events.CreateGrabEvent:FireServer(S.w.SpawnLocation,S.w.SpawnLocation.CFrame)
+				end
+				task.wait(1)
+			end 
+		end
+	})
+
+	lagtab:CreateSlider({
+		Name = "Lag Intensity Slider",
+		Range = {1, 404},
+		Increment = 1,
+		Suffix = "",
+		CurrentValue = 105,
+		Flag = "LagIntensitySlider",
+		Callback = function(Value)
+			N.Lag_Intensity = Value*10
+		end,
+	})
