@@ -1,0 +1,8 @@
+local SkyGrab = grabtab:CreateToggle({
+			Name = "Sky Grab",
+			CurrentValue = false,
+			Flag = "SkyGrab", 
+			Callback = function(Value)
+				kickkk2 = Value
+			end,
+		})
