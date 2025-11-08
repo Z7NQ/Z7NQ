@@ -1,0 +1,12 @@
+usertab:CreateToggle({
+			Name = "Play Typing Animation",
+			CurrentValue = false,
+			Flag = "PlayTypingAnimation",
+			Callback = function(Value)
+				if Value then
+					typingTrack:Play()
+				else
+					typingTrack:Stop()
+				end
+			end,
+		})
