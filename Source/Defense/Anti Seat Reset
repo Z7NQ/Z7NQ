@@ -1,0 +1,24 @@
+local AntiSeatReset = usertab:CreateToggle({
+			Name = "Anti Seat Reset",
+			CurrentValue = false,
+			Flag = "AntiSeatReset", 
+			Callback = function(Value)
+				antiseat = Value
+				local seat 
+				local last_seat
+				while antiseat and task.wait() do
+					local v1 = O.me.Character; if v1 then
+						local v2 = v1:FindFirstChild("Humanoid"); if v2 then
+							if v2.SeatPart then
+								seat = v2.SeatPart
+								last_seat = true
+							else last_seat = false end
+							if O.me.IsHeld.Value and last_seat then
+								while O.me.IsHeld.Value do task.wait(0.3) end
+								while v2.SeatPart ~= seat and task.wait(0.3) do seat:Sit(v2) end
+							end
+						end
+					end
+				end
+			end,		
+		})
