@@ -1,0 +1,16 @@
+liststab:CreateDropdown({
+			Name = "Join Notify(Temp) List",
+			Options = Lt.hui,
+			CurrentOption = {""},
+			MultipleOptions = true,
+			Flag = "SpyList", 
+			Callback = function(Option)
+				Lt.spylist = {"f"}
+				for i,v in pairs(Option) do
+					for i2,v2 in pairs(Lt.hui2) do
+						if v == v2 then table.insert(Lt.spylist, i2) end
+					end
+				end
+			end,
+		})
+	end
