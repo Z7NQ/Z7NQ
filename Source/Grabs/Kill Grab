@@ -1,0 +1,8 @@
+local KillGrab = grabtab:CreateToggle({
+			Name = "Kill Grab",
+			CurrentValue = false,
+			Flag = "KillGrab", 
+			Callback = function(Value)
+				killg = Value
+			end,
+		})
