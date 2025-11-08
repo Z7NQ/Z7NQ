@@ -1,0 +1,24 @@
+local AntiBlobKick = usertab:CreateToggle({
+			Name = "Anti Blob Kick(Visual)",
+			CurrentValue = false,
+			Flag = "AntiBlobKick", 
+			Callback = function(Value)
+				antiblob = Value
+				for _,obj in pairs(S.w:GetDescendants()) do
+					if obj.Name == "CreatureBlobman" then
+						if obj.Parent ~= O.backpack then
+							local v1 = obj:FindFirstChild("LeftDetector")
+							local v2 = obj:FindFirstChild("RightDetector")
+							if v1 and v2 then
+								local v3 = obj.LeftDetector:FindFirstChild("AttachPlayer")
+								local v4 = obj.RightDetector:FindFirstChild("AttachPlayer")
+								if v3 and v4 then
+									v3:Destroy()
+									v4:Destroy()
+								end
+							end
+						end
+					end
+				end
+			end,
+		})
