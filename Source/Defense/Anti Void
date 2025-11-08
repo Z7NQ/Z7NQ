@@ -1,9 +1,26 @@
-local AntiVoid = usertab:CreateToggle({
-			Name = "Anti Void",
-			CurrentValue = false,
-			Flag = "AntiVoid", 
-			Callback = function(Value)
-				antivoid = Value
-				if antivoid then S.w.FallenPartsDestroyHeight = -10000 else S.w.FallenPartsDestroyHeight = -100 end
-			end,
-		})
+ Tab:AddToggle({
+        Name = "Anti void",
+        Default = false,
+        Color = Color3.fromRGB(102, 0, 102),
+        Callback = function(Value)
+            if Value then
+                game:GetService('Workspace').FallenPartsDestroyHeight = -100000
+                while Value do
+                    while game.Players.LocalPlayer.Character.HumanoidRootPart and game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y < -500 and antiVoidEnabled do
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2, -7, -4)
+                        OrionLib:MakeNotification({
+                            Name = "Theres a staarmaan waiting in the sky",
+                            Content = "i will save you next time:3",
+                            Image = "rbxassetid://18624604880",
+                            Time = 5
+                        })
+                        wait()
+                    end
+                    wait()
+                end
+            else
+                game:GetService('Workspace').FallenPartsDestroyHeight = -100
+                antiVoidEnabled = false
+            end
+        end    
+    })
