@@ -1,0 +1,33 @@
+local AntiBurn = usertab:CreateToggle({
+			Name = "Anti Burn",
+			CurrentValue = false,
+			Flag = "AntiBurn", 
+			Callback = function(Value)
+				antiburn = Value
+				while antiburn do
+					if O.me.Character then
+						local v1 = O.me.Character:FindFirstChild("HumanoidRootPart")
+						local v4 = O.me.Character:FindFirstChild("Humanoid")
+						if v1 and v4 then
+							local v2 = v1:FindFirstChild("FireLight")
+							if v2 and check_hum(v4) then
+								local v3 = O.backpack:FindFirstChild("FireExtinguisher")
+								if v3 then
+									local save = v3.ExtinguishPart.Position
+									while v1:FindFirstChild("FireLight") do
+										v3.ExtinguishPart.Position = O.me.Character.HumanoidRootPart.Position
+										task.wait()
+										v3.ExtinguishPart.Position = save
+									end
+									O.backpack.FireExtinguisher.ExtinguishPart.Position = save
+								elseif not(O.me.InPlot.Value) and O.me.CanSpawnToy.Value then
+									task.spawn(toy_spawn2, "FireExtinguisher")
+									while O.backpack:FindFirstChild("FireExtinguisher") == nil do task.wait() end
+								end
+							end
+						end
+					end
+					task.wait()
+				end
+			end,
+		})
