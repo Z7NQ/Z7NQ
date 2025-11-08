@@ -1,0 +1,19 @@
+MainTab:AddToggle({
+        Name = "Poison grab",
+        Default = false,
+        Color = Color3.fromRGB(102, 0, 102),
+        Callback = function(Value)
+            if Value then
+                PoisonGrabCoroutine = coroutine.create(function() grabHandler("poison") end)
+                coroutine.resume(PoisonGrabCoroutine)
+            else
+                if PoisonGrabCoroutine then
+                    coroutine.close(PoisonGrabCoroutine)
+                    PoisonGrabCoroutine = nil
+                    for _, prt in pairs(PoisonHurtParts) do
+                        prt.Position = Vector3.new(0,-200,0)
+                    end
+                end
+            end
+        end
+    })
