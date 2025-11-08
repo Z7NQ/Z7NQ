@@ -1,0 +1,8 @@
+local CrazyGrab = grabtab:CreateToggle({
+			Name = "Crazy Grab",
+			CurrentValue = false,
+			Flag = "CrazyGrab", 
+			Callback = function(Value)
+				kickkk1 = Value
+			end,
+		})
