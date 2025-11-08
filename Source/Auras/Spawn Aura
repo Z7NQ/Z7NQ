@@ -1,0 +1,37 @@
+local TpToSpawnAura = auratab:CreateToggle({
+			Name = "Tp To Spawn Aura",
+			CurrentValue = false,
+			Flag = "TpToSpawnAura",
+			Callback = function(Value)
+				flingaura = Value
+				while flingaura and task.wait() do
+					local v1 = O.me.Character; if v1 then
+						local v2 = v1:FindFirstChild("Head") if v2 then
+							for _,plr in ipairs(S.Players:GetPlayers()) do
+								if flingaura and plr ~= O.me and check_prem(plr.Name) and check_whll(plr.Name) then
+									local v11 = plr.Character; if v11 then
+										local v12 = v11:FindFirstChild("Head"); if v12 then
+											if (v2.Position - v12.Position).Magnitude < N.distallaura then
+												task.spawn(function()
+													invis_touch(hd)
+													while not(hd:FindFirstChild("PartOwner")) do task.wait() end
+													local bp = hd:FindFirstChild("fpabp")
+													if not(bp) then
+														local bp = Instance.new("BodyPosition", hd)
+														bp.MaxForce = Vector3.new(10000,10000,10000)
+														bp.D = 2000
+														while hd:FindFirstChild("PartOwner") do task.wait() end
+														bp:Destroy()
+													end
+												end)
+											end
+										end
+									end
+								end
+							end
+						end
+					end
+				end
+				for _,obj in pairs(S.w:GetDescendants()) do if obj.Name == "fpabp" then obj:Destroy() end end
+			end,
+		})
