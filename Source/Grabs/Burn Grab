@@ -1,0 +1,8 @@
+local BurnGrab = grabtab:CreateToggle({
+		 	Name = "Burn Grab",
+		 	CurrentValue = false,
+		 	Flag = "BurnGrab", 
+			Callback = function(Value)
+				fire = Value
+	end,
+})
