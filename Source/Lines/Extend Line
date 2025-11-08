@@ -1,0 +1,12 @@
+grabtab:CreateToggle({
+			Name = "Extend Line",
+			CurrentValue = false,
+			Flag = "ExtendLine", 
+			Callback = function(Value)
+				extende = Value
+				while extende do
+					O.Events.ExtendLineEvent:FireServer(1000000)
+					task.wait()
+				end
+			end,
+		})
