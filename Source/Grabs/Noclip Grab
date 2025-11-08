@@ -1,0 +1,8 @@
+local NoclipGrab = grabtab:CreateToggle({
+			Name = "Noclip Grab",
+			CurrentValue = false,
+			Flag = "NoclipGrab", 
+			Callback = function(Value)
+				clippp = Value
+			end,
+		})
