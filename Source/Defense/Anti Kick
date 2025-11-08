@@ -1,0 +1,51 @@
+local AntiKick = usertab:CreateToggle({
+			Name = "Anti kick",
+			CurrentValue = false,
+			Flag = "AntiKick", 
+			Callback = function(Value)
+				antikick = Value
+				local function f()
+					if S.w:FindFirstChild(O.myname) then
+						local hrp,hum = get_all()
+						local v5 = hrp.Parent["Right Leg"]
+						local v6 = hum
+						local v7 = hrp
+						if v5 and v6 and v7 then
+							if v6.Health ~= 0 and v6:GetState() ~= Enum.HumanoidStateType.Dead and not(O.me.InPlot.Value) then
+								local v1 = O.backpack:FindFirstChild("NinjaKunai")
+								if v1 then
+									local v2 = v1:FindFirstChild("StickyPart")
+									if v2 then
+										local v3 = v2:FindFirstChild("StickyWeld")
+										if v3 then
+											local v4 = v3.Part1
+											if v4 then
+												if v4 ~= v5 then O.Events.DestroyToyEvent:FireServer(v1);task.wait() ; f() end
+
+											else O.Events.DestroyToyEvent:FireServer(v1);task.wait() ; f() end
+										else O.Events.DestroyToyEvent:FireServer(v1);task.wait() ; f() end
+									else O.Events.DestroyToyEvent:FireServer(v1);task.wait() ; f() end
+
+								elseif not(O.me.InPlot.Value) and O.me.CanSpawnToy.Value then
+									if lastt then lastt = false; task.wait(0.5) end
+									task.spawn(toy_spawn2,"NinjaKunai")
+									while not(O.backpack:FindFirstChild("NinjaKunai")) do task.wait() end
+									local v8 = O.backpack:FindFirstChild("NinjaKunai").StickyPart
+									local v9 = v8.StickyWeld
+									auto_invis_touch(v8, v7)
+									while v9.Part1 == nil do
+										O.Events.StickyPartEvent:FireServer(v8,v5,CFrame.new(0.0490287527, -0.000000000000000, 0.00000000, -0.00000000, 0.00739139877, -0.999561906, -0.998452604, -0.0478846952, 0.0282763243, -0.0476547107, 0.99882561, 0.00000000000) * CFrame.Angles(0, 180, 0))
+										task.wait()
+									end
+								elseif O.me.InPlot.Value then lastt = true end
+							end
+						end
+					end
+				end
+				local lastt = false
+				while antikick do
+					f()
+					task.wait()
+				end
+			end,
+		})
