@@ -1,0 +1,8 @@
+local UltraGrab = grabtab:CreateToggle({
+			Name = "Ultra Grab",
+			CurrentValue = false,
+			Flag = "UltraGrab", 
+			Callback = function(Value)
+				ultragrabbb = Value
+			end,
+		})
