@@ -1,0 +1,120 @@
+TPTab:AddButton({
+        Name = "Teleport",
+        Callback = function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2, -7, -4)
+        end
+    })
+
+    local Section = TPTab:AddSection({Name = "Houses"})
+
+    TPTab:AddDropdown({
+        Name = "Select house",
+        Default = "Not selected",
+        Options = {"Yellow house", "Green house", "Purple house", "China house", "Blue house"},
+        Callback = function(Value)
+            houseSelected = Value
+        end
+    })
+
+    TPTab:AddButton({
+        Name = "Teleport",
+        Callback = function()
+            if houseSelected == "Yellow house" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-492, -7, -164)
+            elseif houseSelected == "Green house" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-532, -7, 95)
+            elseif houseSelected == "Purple house" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(255, -7, 465)
+            elseif houseSelected == "China house" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(558, 123, -76)
+            elseif houseSelected == "Blue house" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(511, 83, -344)
+            end
+        end    
+    })
+
+    local Section = TPTab:AddSection({Name = "Other builds"})
+
+    TPTab:AddDropdown({
+        Name = "Select build",
+        Default = "Not selected",
+        Options = {"Big house", "Farm", "Snow mountain", "Default mountain", "Flying island"},
+        Callback = function(Value)
+            buildSelected = Value
+        end
+    })
+
+    TPTab:AddButton({
+        Name = "Teleport",
+        Callback = function()
+            if buildSelected == "Big house" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-244, 80, 293)
+            elseif buildSelected == "Farm" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-197, 59, -285)
+            elseif buildSelected == "Snow mountain" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-433, 230, 516)
+            elseif buildSelected == "Default mountain" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(394, 163, 278)
+            elseif buildSelected == "Flying island" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(71, 346, 330)
+            end
+        end    
+    })
+
+    local Section = TPTab:AddSection({Name = "Secrets"})
+
+    TPTab:AddDropdown({
+        Name = "Select secret",
+        Default = "Not selected",
+        Options = {"Big secret exit 1", "Big secret exit 2", "Small secret", "Big secret in the cave", "Flying island secret", "Mountain secret"},
+        Callback = function(Value)
+            secretSelected = Value
+        end
+    })
+
+    TPTab:AddButton({
+        Name = "Teleport",
+        Callback = function()
+            if secretSelected == "Big secret exit 1" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(59, 37, 485)
+            elseif secretSelected == "Big secret exit 2" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-321, 20, 466)
+            elseif secretSelected == "Small secret" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-9, 32, -259)
+            elseif secretSelected == "Big secret in the cave" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(588, 83, -181)
+            elseif secretSelected == "Flying island secret" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(116, 296, 335)
+            elseif secretSelected == "Mountain secret" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-362, -7, -344)
+            end
+        end    
+    })
+
+    local Section = TPTab:AddSection({Name = "Slots"})
+
+    TPTab:AddDropdown({
+        Name = "Slot selected",
+        Default = "Not selected",
+        Options = {"Slot 1 (spawn)", "Slot 2 (yellow and green houses)", "Slot 3 (big house)", "Slot 4 (purple house)", "Slot 5 (blue house)"},
+        Callback = function(Value)
+            slotSelected = Value
+        end
+    })
+
+    TPTab:AddButton({
+        Name = "Teleport",
+        Callback = function()
+            if slotSelected == "Slot 1 (spawn)" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(66, -7, -110)
+            elseif slotSelected == "Slot 2 (yellow and green houses)" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-531, -7, -48)
+            elseif slotSelected == "Slot 3 (big house)" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-227, 83, 418)
+            elseif slotSelected == "Slot 4 (purple house)" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(169, -7, 513)
+            elseif slotSelected == "Slot 5 (blue house)" then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(554, 83, -229)
+            end
+        end    
+    })
