@@ -1,0 +1,11 @@
+Tab:AddButton({
+        Name = "Anti bang",
+        Callback = function(Value)
+            local positionOld = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+		    game:GetService('Workspace').FallenPartsDestroyHeight = -1000
+		    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(0, game:GetService('Workspace').FallenPartsDestroyHeight + 500, 0))
+		    wait(0.8)
+		    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(positionOld)
+            game:GetService('Workspace').FallenPartsDestroyHeight = -100
+        end    
+    })
