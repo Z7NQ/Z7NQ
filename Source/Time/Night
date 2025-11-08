@@ -1,0 +1,6 @@
+VisualTab:AddButton({
+        Name = "Night",
+        Callback = function()
+            game.Lighting.ClockTime = 0
+        end 
+    })
