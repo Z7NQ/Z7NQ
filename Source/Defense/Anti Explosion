@@ -1,8 +1,31 @@
-local AntiExplosion = usertab:CreateToggle({
-			Name = "Anti Explosion",
-			CurrentValue = false,
-			Flag = "AntiExplosion", 
-			Callback = function(Value)
-				antiexpl = Value 
-			end,
-		})
+ Tab:AddToggle({
+        Name = "Anti explosion",
+        Default = false,
+        Color = Color3.fromRGB(102, 0, 102),
+        Save = true,
+        Flag = "AntiExplosion",
+        Callback = function(enabled)
+            local localPlayer = game.Players.LocalPlayer
+    
+            if enabled then
+                if localPlayer.Character then
+                    setupAntiExplosion(localPlayer.Character)
+                end
+                characterAddedConn = localPlayer.CharacterAdded:Connect(function(character)
+                    if antiExplosionConnection then
+                        antiExplosionConnection:Disconnect()
+                    end
+                    setupAntiExplosion(character)
+                end)
+            else
+                if antiExplosionConnection then
+                    antiExplosionConnection:Disconnect()
+                    antiExplosionConnection = nil
+                end
+                if characterAddedConn then
+                    characterAddedConn:Disconnect()
+                    characterAddedConn = nil
+                end
+            end
+        end
+    })
