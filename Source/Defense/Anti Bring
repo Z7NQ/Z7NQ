@@ -1,0 +1,70 @@
+Tab:AddToggle({
+        Name = "Anti bring",
+        Default = false,
+        Color = Color3.fromRGB(102, 0, 102),
+        Callback = function(Value)
+            local a = game.Players.LocalPlayer.Name.."SpawnedInToys"
+            hui = Value
+            if hui == true then
+                for _, v in pairs(workspace:GetDescendants()) do
+                    if v.Name == "LeftWeld" then
+                        if v.Parent.Parent.Parent ~= workspace:FindFirstChild(a) then
+                            v.Enabled = false
+                        end
+                    elseif v.Name == "LeftAlignOrientation" then
+                        if v.Parent.Parent.Parent ~= workspace:FindFirstChild(a) then
+                            v.Enabled = false
+                        end
+                    elseif v.Name == "RightWeld" then
+                        if v.Parent.Parent.Parent ~= workspace:FindFirstChild(a) then
+                            v.Enabled = false
+                        end
+                    elseif v.Name == "RightAlignOrientation" then
+                        if v.Parent.Parent.Parent ~= workspace:FindFirstChild(a) then
+                            v.Enabled = false
+                        end
+                    end
+                end
+                workspace.DescendantAdded:Connect(function(v)
+                    if v.Name == "LeftWeld" then
+                        if v.Parent.Parent.Parent ~= workspace:FindFirstChild(a) then
+                            v.Enabled = false
+                        end
+                    elseif v.Name == "LeftAlignOrientation" then
+                        if v.Parent.Parent.Parent ~= workspace:FindFirstChild(a) then
+                            v.Enabled = false
+                        end
+                    elseif v.Name == "RightWeld" then
+                        if v.Parent.Parent.Parent ~= workspace:FindFirstChild(a) then
+                            v.Enabled = false
+                        end
+                    elseif v.Name == "RightAlignOrientation" then
+                        if v.Parent.Parent.Parent ~= workspace:FindFirstChild(a) then
+                            v.Enabled = false
+                        end
+                    end
+                end)
+            end
+            if hui == false then
+                for _, v in pairs(workspace:GetDescendants()) do
+                    if v.Name == "LeftWeld" then
+                        if v.Parent.Parent.Parent ~= workspace:FindFirstChild(a) then
+                            v.Enabled = true
+                        end
+                    elseif v.Name == "LeftAlignOrientation" then
+                        if v.Parent.Parent.Parent ~= workspace:FindFirstChild(a) then
+                            v.Enabled = true
+                        end
+                    elseif v.Name == "RightWeld" then
+                        if v.Parent.Parent.Parent ~= workspace:FindFirstChild(a) then
+                            v.Enabled = true
+                        end
+                    elseif v.Name == "RightAlignOrientation" then
+                        if v.Parent.Parent.Parent ~= workspace:FindFirstChild(a) then
+                            v.Enabled = true
+                        end
+                    end
+                end
+            end
+        end
+    })
