@@ -1,0 +1,20 @@
+scripttab:CreateButton({
+		Name = "Rejoin Game",
+		Callback = function()
+			local TeleportService = game:GetService("TeleportService")
+			local Players = game:GetService("Players")
+			local LocalPlayer = O.me
+
+			local Rejoin = coroutine.create(function()
+				local Success, ErrorMessage = pcall(function()
+					TeleportService:Teleport(game.PlaceId, LocalPlayer)
+				end)
+
+				if ErrorMessage and not Success then
+					warn(ErrorMessage)
+				end
+			end)
+
+			coroutine.resume(Rejoin)
+		end,
+	})
