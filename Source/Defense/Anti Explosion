@@ -1,0 +1,8 @@
+local AntiExplosion = usertab:CreateToggle({
+			Name = "Anti Explosion",
+			CurrentValue = false,
+			Flag = "AntiExplosion", 
+			Callback = function(Value)
+				antiexpl = Value 
+			end,
+		})
