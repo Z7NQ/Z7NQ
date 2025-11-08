@@ -1,0 +1,42 @@
+killtab:CreateButton({
+			Name = "Kill Player",
+			Callback = function()
+				for _,plr in pairs(P.who) do
+					if S.Players:FindFirstChild(plr) then
+						plr_kill2(S.Players[plr])
+					end
+				end
+			end,
+		})
+
+		killtab:CreateToggle({
+			Name = "Loop Kill Player",
+			CurrentValue = false,
+			Callback = function(Value)
+				loopkill = Value
+				while loopkill and task.wait() do
+					for _,plr in pairs(P.who) do
+						if S.Players:FindFirstChild(plr) then
+							plr_kill2(S.Players[plr])
+						end
+					end
+				end
+			end,
+		})
+
+liststab:CreateSection("Players Menu")
+		liststab:CreateDropdown({
+			Name = "Kill List",
+			Options = Lt.hui,
+			CurrentOption = {""},
+			MultipleOptions = true,
+			Flag = "PlayersList", 
+			Callback = function(Option)
+				P.who = {}
+				for i,v in pairs(Option) do
+					for i2,v2 in pairs(Lt.hui2) do
+						if v == v2 then table.insert(P.who, i2) end
+					end
+				end
+			end,
+		})
