@@ -1,0 +1,9 @@
+local AntiVoid = usertab:CreateToggle({
+			Name = "Anti Void",
+			CurrentValue = false,
+			Flag = "AntiVoid", 
+			Callback = function(Value)
+				antivoid = Value
+				if antivoid then S.w.FallenPartsDestroyHeight = -10000 else S.w.FallenPartsDestroyHeight = -100 end
+			end,
+		})
