@@ -1,0 +1,116 @@
+auratab:CreateToggle({
+			Name = "Aura Toggle",
+			CurrentValue = false,
+			Callback = function(Value)
+				toyaura = Value
+				while toyaura and task.wait() do
+					local v1 = O.me.Character
+					if v1 and N.cat ~= 0 then
+						local v2 = v1:FindFirstChild("HumanoidRootPart")
+						local v12 = v1:FindFirstChild("CamPart")
+						if v2 and v12 then
+							N.cat = 0
+							for i,toy in pairs(Lt.lat) do if toy.Parent then N.cat = N.cat + 1 end end
+							if hat then N.chal = N.chal - N.chal - N.chal end
+							if dyat then N.cdyat = N.cdyat - N.cdyat - N.cdyat end
+							for i,toy in pairs(Lt.lat) do
+								if toy.Parent then
+									local v3 = toy:FindFirstChild("PartOwnerValue")
+									local v7 = toy:FindFirstChild("ovhlat")
+									if not(v3) then
+										for _,prt in pairs(toy:GetChildren()) do
+											if prt:IsA("Part") then
+												if prt.CanQuery then
+													local v31 = Instance.new("ObjectValue")
+													v31.Parent = toy
+													v31.Name = "PartOwnerValue"
+													v31.Value = prt
+													v3 = prt
+													break
+												end
+											end
+										end
+									else v3 = v3.Value end
+									if not(v7) then
+										local hl = Instance.new("Highlight", O.hls)
+										hl.Name = "hlat"
+										hl.Adornee = toy
+										hl.OutlineColor = Color3.fromRGB(0, 0, 0)
+										hl.FillColor = Color3.fromRGB(0, 0, 0)
+										hl.OutlineTransparency = 0
+										hl.FillTransparency = 0.5
+										v7 = hl
+										local ov = Instance.new("ObjectValue", toy)
+										ov.Name = "ovhlat"
+										ov.Value = hl
+									else v7 = v7.Value; v7.Enabled = false end
+									if vizat then v7.Enabled = true end
+									if v3 then
+										local v4 = v3:FindFirstChild("bgat")
+										local v5 = v3:FindFirstChild("PartOwner")
+										local v6 = v3:FindFirstChild("bpat")
+										if not(v4) then v4 = Instance.new("BodyGyro", v3); v4.MaxTorque = N.V.mhv3; v4.D = 100; v4.Name = "bgat" end
+										if not(v6) then v6 = Instance.new("BodyPosition", v3); v6.MaxForce = N.V.mhv3; v6.D = 100; v6.Name = "bpat" end
+										auto_invis_touch(v3, v2, v7, N.C2)
+										local v41 = toy:FindFirstChild("HoldPart"); if v41 then
+											local v42 = v41:FindFirstChild("RigidConstraint"); if v42 then
+												local v43 = v42.Attachment1; if v43 then
+													auto_invis_touch(v43.Parent.Parent.Head, v2, v7, N.C2)
+												end
+											end
+										end
+										if (toy.Name == "DiceBig" or toy.Name == "DiceSmall") and rgb then invis_touch(v3); task.wait() end
+										for _, prt in pairs(toy:GetDescendants()) do if prt:IsA("BasePart") then prt.CanCollide = false end end
+										if not(hatta) then
+											if P.spat and P.spat.Parent then v2 = P.spat end
+											v7.FillColor = Color3.fromRGB(0, 255, 255)
+											local angle = i * ((2 * math.pi) / N.cat)
+											if StepEnable then angle = (i * ((2 * math.pi) / N.cat))+(math.pi*(N.step/5400)) end
+											local x = math.cos(angle) * (N.dta+N.cat+N.chal)
+											local y = math.sin(angle) * (N.dta+N.cat+N.chal)
+											if squat then
+												if x > math.cos(math.pi/4)*(N.dta+N.cat+N.chal) then x = math.cos(math.pi/4)*(N.dta+N.cat+N.chal) end
+												if y > math.cos(math.pi/4)*(N.dta+N.cat+N.chal) then y = math.cos(math.pi/4)*(N.dta+N.cat+N.chal) end
+												if x < -(math.cos(math.pi/4)*(N.dta+N.cat+N.chal)) then x = -(math.cos(math.pi/4)*(N.dta+N.cat+N.chal)) end
+												if y < -(math.cos(math.pi/4)*(N.dta+N.cat+N.chal)) then y = -(math.cos(math.pi/4)*(N.dta+N.cat+N.chal)) end
+											end
+											local pos = (v2.CFrame * CFrame.new(x,N.hta+N.cdyat,y))
+											local vec = Vector3.new(x,N.hta+N.cdyat,y)
+											if xyat then pos = (v2.CFrame * CFrame.new(x,y,N.hta+N.cdyat)); vec = Vector3.new(x,y,N.hta+N.cdyat) elseif yzat then pos = (v2.CFrame * CFrame.new(N.hta+N.cdyat,x,y)); vec = Vector3.new(N.hta+N.cdyat,x,y) end
+											local v21 = pos
+											local v22 = pos.p
+											if lokat then v21 = CFrame.new(pos.p, v2.Position) end
+											if lckat then v22 = v2.Position + vec end
+											if slkat then v21 = v12.CFrame end
+											v4.CFrame = v21
+											v6.Position = v22
+											v4.CFrame = v4.CFrame * CFrame.Angles(math.rad(N.xrta), math.rad(N.yrta), math.rad(N.zrta))
+											if StepEnable then N.step = N.step+N.RawStep else N.step = 0 end
+											v7.FillColor = Color3.fromRGB(0, 255, 0)
+											v2 = O.me.Character.HumanoidRootPart
+										else
+											v7.FillColor = Color3.fromRGB(0, 255, 255)
+											local angle = i * ((2 * math.pi) / N.cat)
+											local x = math.cos(angle) * (100)
+											local y = math.sin(angle) * (100)
+											local pos = (v2.CFrame * CFrame.new(x,-1000,y))
+											v4.CFrame = pos
+											v6.Position = pos.p
+											v7.FillColor = Color3.fromRGB(0, 0, 255)
+										end
+										if pwat then task.wait() end
+									end
+								end
+							end
+							if pwaat then task.wait() end
+						end
+					end
+				end
+				Lt.lat = {}
+				N.cat = 0
+				for _,obj in pairs(S.w:GetDescendants()) do
+					if obj.Name == "ovhlat" then for _,prt in pairs(obj.Parent:GetChildren()) do if prt:IsA("Part") then prt.CanCollide = true end end end
+					if obj.Name == "hlat" or obj.Name == "ovhlat" or obj.Name == "bgat" or obj.Name == "bpat" then obj:Destroy() end
+				end
+			end,
+		})
