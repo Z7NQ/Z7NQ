@@ -1,0 +1,12 @@
+usertab:CreateToggle({
+			Name = "Fly Crouch",
+			CurrentValue = false,
+			Flag = "FlyCrouch",
+			Callback = function(Value)
+				if Value then
+					crouchTrack:Play()
+				else
+					crouchTrack:Stop()
+				end
+			end,
+		})
