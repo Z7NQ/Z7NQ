@@ -1,0 +1,6 @@
+VisualTab:AddButton({
+        Name = "Day (default)",
+        Callback = function()
+            game.Lighting.ClockTime = 10
+        end 
+    })
