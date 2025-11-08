@@ -1,0 +1,8 @@
+local RadioactiveGrab = grabtab:CreateToggle({
+			Name = "Radioactive Grab",
+			CurrentValue = false,
+			Flag = "RadioactiveGrab", 
+			Callback = function(Value)
+				radiactive = Value
+			end,
+		})
