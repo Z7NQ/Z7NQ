@@ -1,0 +1,12 @@
+grabtab:CreateToggle({
+			Name = "Invisble Line",
+			CurrentValue = false,
+			Flag = "InvisbleLine", 
+			Callback = function(Value)
+				invisline = Value
+				while invisline do
+					O.Events.CreateGrabEvent:FireServer()
+					task.wait()
+				end
+			end,
+		})
