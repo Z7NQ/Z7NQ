@@ -1,0 +1,14 @@
+local WaterWalk = usertab:CreateToggle({
+			Name = "Water Walk",
+			CurrentValue = false,
+			Flag = "WaterWalk", 
+			Callback = function(Value)
+				local v1 = O.m.AlwaysHereTweenedObjects.Ocean.Object.ObjectModel
+				local t = not(v1.Ocean.CanCollide)
+				for _,prt in pairs(v1:GetChildren()) do 
+					if prt:IsA("Part") and prt.Name == "Ocean" then 
+						prt.CanCollide = t
+					end
+				end
+			end,
+		})
