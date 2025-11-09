@@ -1,0 +1,144 @@
+--// OrionLib Load
+local success, OrionLib = pcall(function()
+	return loadstring(game:HttpGet("https://raw.githubusercontent.com/jensonhirst/Orion/main/source"))()
+end)
+
+local function logConsole(prefix, message)
+	print(prefix .. " " .. message)
+end
+
+local function sendWebhook(url, data)
+	local success, err = pcall(function()
+		request({
+			Url = url,
+			Method = "POST",
+			Headers = {["Content-Type"] = "application/json"},
+			Body = game:GetService("HttpService"):JSONEncode(data)
+		})
+	end)
+	if success then
+		logConsole("Server:", "Logged To Webhook..")
+	else
+		logConsole("UNKNOWN ERROR:", "Failed To Get Webhook Request.. Contact Owner..")
+	end
+end
+
+--// Webhook URL
+local WEBHOOK = "YOUR_WEBHOOK_URL_HERE" -- 🔧 Replace this!
+
+if success and OrionLib then
+	logConsole("System:", "Graphical User Interface Executed Successfully!")
+	sendWebhook(WEBHOOK, {content = "**System:** GUI executed successfully!"})
+else
+	logConsole("System Error:", "Graphical User Interface Execution Failed..")
+	sendWebhook(WEBHOOK, {content = "**System Error:** GUI execution failed."})
+	return
+end
+
+--// Window Setup
+local Window = OrionLib:MakeWindow({
+	Name = "Private System",
+	HidePremium = true,
+	SaveConfig = true,
+	ConfigFolder = "Private System Configuration Folder",
+	IntroEnabled = true,
+	IntroText = "| System Loading... |"
+})
+
+--// Boot Notification
+OrionLib:MakeNotification({
+	Name = "| System |",
+	Content = "GUI Booted Successfully!",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+logConsole("System:", "GUI Booted Successfully!")
+sendWebhook(WEBHOOK, {content = "**System:** GUI Booted Successfully!"})
+
+--// Warning Notification
+OrionLib:MakeNotification({
+	Name = "| Warning System |",
+	Content = "This GUI Logs EVERY ACTION You Do, These ACTIONS Include WEBHOOKS & CONSOLE",
+	Image = "rbxassetid://4483345998",
+	Time = 8
+})
+logConsole("System Warning Information:", "This GUI Logs EVERY ACTION You Do, Including WEBHOOKS & CONSOLE")
+sendWebhook(WEBHOOK, {content = "**Warning System:** Logs all GUI actions."})
+
+--// Tabs
+local InfoTab = Window:MakeTab({
+	Name = "System Information",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local DefenseTab = Window:MakeTab({
+	Name = "Defense Options",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+--// Info Section
+InfoTab:AddParagraph("Creator Information", "Created by: YourNameHere\n\n⚠️ WARNING:\nThis GUI logs every action you perform.\n\n💬 Command: Type /console in chat to view printed logs.")
+logConsole("System Info:", "Displayed creator info & warning.")
+sendWebhook(WEBHOOK, {content = "**System Info:** Displayed creator and warning section."})
+
+--// Defense Toggle
+DefenseTab:AddToggle({
+	Name = "Defense Mode (Placeholder)",
+	Default = false,
+	Callback = function(Value)
+		logConsole("Defense Options:", "Defense Toggle changed to " .. tostring(Value))
+		sendWebhook(WEBHOOK, {content = "**Defense Options:** Defense Toggle changed to " .. tostring(Value)})
+	end
+})
+
+--// Log Every Action
+local function logAction(action)
+	logConsole("Action Logged:", action)
+	sendWebhook(WEBHOOK, {content = "**Action:** " .. action})
+end
+
+OrionLib:MakeNotification({
+	Name = "| Logging Active |",
+	Content = "Action logging to console and webhook is now active.",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+logAction("Action logging system initialized.")
+
+--// Tab Change Log
+for _, tab in ipairs(Window.Tabs) do
+	tab.Button.MouseButton1Click:Connect(function()
+		logAction("Switched to tab: " .. tab.Title)
+	end)
+end
+
+--// UI Lifecycle
+game:GetService("CoreGui").ChildAdded:Connect(function(obj)
+	logAction("UI Element Added: " .. obj.Name)
+end)
+game:GetService("CoreGui").ChildRemoved:Connect(function(obj)
+	logAction("UI Element Removed: " .. obj.Name)
+end)
+
+--// Orion Window Close or Minimize
+Window.Close = function()
+	logAction("GUI Closed by user.")
+end
+
+Window.Minimize = function()
+	logAction("GUI Minimized by user.")
+end
+
+--// Performance Stats UI Activation
+if not getgenv().performance_stats then
+	getgenv().performance_stats = true
+	logAction("Performance stats initialized successfully.")
+else
+	logAction("Performance stats already initialized.")
+end
+
+--// End of Script
+logConsole("System:", "Initialization Complete.")
+sendWebhook(WEBHOOK, {content = "**System:** Initialization Complete."})
